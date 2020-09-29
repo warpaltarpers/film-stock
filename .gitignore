@@ -9,6 +9,7 @@
 .history
 .svn/
 coverage/
+license/
 
 # IntelliJ related
 *.iml
