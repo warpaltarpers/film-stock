@@ -1,0 +1,27 @@
+name: Flutter Test
+
+on:
+  pull_request:
+    branches:
+      - release/**
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        uses: steebchen/flutter@v1.1.0
+        with:
+          args: pub get
+          
+      - name: Analyze static code
+        uses: steebchen/flutter@v1.1.0
+        with:
+          args: analyze
+
+      - name: Run unit tests
+        uses: steebchen/flutter@v1.1.0
+        with:
+          args: test --update-goldens
